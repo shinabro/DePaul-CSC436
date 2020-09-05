@@ -20,7 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.1
    
       #this will install Node and npm on Ubuntu
       - uses: actions/setup-node@v1 
@@ -31,11 +31,11 @@ jobs:
       - run: npm install -g @angular/cli > /dev/null
       - run: ng build --prod --output-path=dist --base-href="https://shinabro.github.io/demo/"
       - name: Publish generated content to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
-          dir: dist
+          FOLDER : dist
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token : ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
