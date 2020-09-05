@@ -2,4 +2,4 @@
 
 Test2
 
-gh pages push
+gh pages push 2
