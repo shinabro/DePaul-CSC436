@@ -1,2 +1,38 @@
-<h2>{{title}}</h2>
-<h6>Fun</h6>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
+  <ul class="navbar-nav">
+    <div class = "navbar-header">
+      <a class = "navbar-brand" href = "https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=CSC&CatalogNbr=436">CSC 436</a>
+   </div>    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        HRef
+      </a>
+      <div class="dropdown-menu" aria-labelledby="hrefDropdown">
+        <a class="dropdown-item" href="todo">Todo</a>
+        <a class="dropdown-item" href="/student">Student</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="routerLinkDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Router
+      </a>
+      <div class="dropdown-menu" aria-labelledby="routerLinkDropdown">
+        <a class="dropdown-item" [routerLink]="['todo']">Todo</a>
+        <a class="dropdown-item" [routerLink]="['/student']">Student</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="toggle()">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['login']">Login</a>
+    </li>    
+  </ul>
+</nav>
+<br />
+<br />
+<br />
+<app-about [host]="runningOS" *ngIf="displayChild"></app-about>
+<router-outlet></router-outlet>

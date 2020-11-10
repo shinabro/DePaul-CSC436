@@ -1,0 +1,53 @@
+<!-- 
+  Revision of class registration extended to include validation
+  #name *ngIf [ngClass]
+-->
+<form #myForm="ngForm" (ngSubmit)="myForm.form.valid && onSubmit(myForm)">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="model.name" 
+      #name="ngModel" [ngClass]="{ 'is-invalid': myForm.submitted && name.invalid }" required>
+    <div *ngIf="myForm.submitted && name.invalid" class="invalid-feedback">
+      <p *ngIf="name.errors.required">Name is required</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
+      [ngClass]="{ 'is-invalid': myForm.submitted && email.invalid }" email required>
+    <div *ngIf="myForm.submitted && email.invalid" class="invalid-feedback">
+      <div *ngIf="email.errors.required">Email is required</div>
+      <div *ngIf="email.errors.email">Must be a valid email address</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+      [ngClass]="{ 'is-invalid': myForm.submitted && password.invalid }"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+    <div *ngIf="myForm.submitted && password.invalid" class="invalid-feedback">
+      <div *ngIf="password.errors.required">Password is required</div>
+      <div *ngIf="password.invalid">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Registration Date</label>
+    <input type="date" class="form-control" name="regdate" [(ngModel)]="model.regdate">
+  </div>
+
+  <div class="form-group">
+    <label>Major</label>
+    <select class="form-control" name="major" [(ngModel)]="model.major">
+      <option value="">Select an option</option>
+      <option *ngFor="let major of Major" [value]="major">
+        {{major}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Submit</button>
+  </div>
+</form>
