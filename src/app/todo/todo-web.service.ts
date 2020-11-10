@@ -15,7 +15,7 @@ export class Todo {
 })
 
 export class TodoWebService {
-  url = 'http://jsonplaceholder.typicode.com/todos';
+  url = 'https://jsonplaceholder.typicode.com/todos';
    
    
   constructor(private httpClient: HttpClient) {}
