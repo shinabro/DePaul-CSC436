@@ -24,13 +24,13 @@ describe('CalculatorService', () => {
 
   it('add test', () => {
     let result = service.add(1, 1);
-    expect(result).toEqual(2);
+    expect(2).toEqual(result);
   })
 
   it('example of stub, should return value with 42', () => {
     spyOn(service, 'add').and.returnValue(42);
     let result = service.add(1, 1);
-    expect(result).toEqual(42);
+    expect(42).toEqual(result);
   })
 
   it('should return values 1, 2, 3', () => {

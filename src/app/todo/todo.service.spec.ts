@@ -14,9 +14,5 @@ describe('TodoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be created', () => {
-    
-    expect(service.getList())();
-  });
 
 });
